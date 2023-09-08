@@ -1,0 +1,17 @@
+#Задание1:
+
+SELECT login, COUNT("Orders".id) 
+FROM"Couriers" 
+INNER JOIN "Orders" 
+ON "Couriers".id="Orders"."courierId" 
+WHERE "Orders"."inDelivery" = 't' 
+GROUP BY "Couriers".id;
+
+#Задание2:
+
+SELECT track, 
+CASE WHEN "finished"='t' THEN '2' 
+WHEN "cancelled" = 't' THEN '-1' 
+WHEN "inDelivery" = 't' THEN '1' 
+ELSE '0' END AS "status" 
+FROM "Orders";
